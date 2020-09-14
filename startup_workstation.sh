@@ -36,12 +36,12 @@ stap-prep
 systemctl start pmcd
 systemctl enable pmcd
 
-echo "<*****>Installing Container Tools in RHEL 8/docker"
-echo "<*****>https://linuxconfig.org/how-to-install-docker-in-rhel-8"
-dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-dnf repolist -v
-dnf install -y docker-ce-3:18.09.1-3.el7
-systemctl enable --now docker
-echo "<*****>Is docker active?"
-systemctl is-active docker
+# echo "<*****>Installing Container Tools in RHEL 8/docker"
+# echo "<*****>https://linuxconfig.org/how-to-install-docker-in-rhel-8"
+# dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+# dnf repolist -v
+# dnf install -y docker-ce-3:18.09.1-3.el7
+# systemctl enable --now docker
+# echo "<*****>Is docker active?"
+# systemctl is-active docker
 # dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
