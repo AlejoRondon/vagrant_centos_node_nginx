@@ -7,8 +7,8 @@ sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
 sudo dnf module list php -y
 sudo dnf module enable php:remi-7.4 -y
 sudo dnf install -y php php-cli php-common
-sudo dnf install php-mysql
-sudo yum install php-pgsql
+sudo dnf install -y php-mysql
+sudo yum install -y php-pgsql php-pdo_pgsql
 php -v
 sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
