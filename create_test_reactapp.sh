@@ -12,12 +12,12 @@ yarn add serve
 #https://stackoverflow.com/questions/43011207/using-homepage-in-package-json-without-messing-up-paths-for-localhost
 yarn build 
 # copying folder
-cp -r build/ /var/www/    
+cp -r build/ /var/www/wordpress/   
 # renaming "build" folder on /var/www/ to "testapp"                                                  
-mv /var/www/build /var/www/testapp.com
+mv /var/www/wordpress/build /var/www/wordpress/testapp.com
 # yarn serve -s build 
-chown nginx:nginx /var/www/testapp.com
-chmod -R 775 /var/www/testapp.com 
+chown nginx:nginx /var/www/wordpress/testapp.com
+chmod -R 775 /var/www/wordpress/testapp.com 
 chcon -t httpd_sys_content_t /var/www/testapp.com -R
 chcon -t httpd_sys_rw_content_t /var/www/testapp.com -R
-sudo ln -s /etc/nginx/sites-available/testapp.com /etc/nginx/sites-enabled/
+
