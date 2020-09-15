@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # please review: startup_firewall.sh
   config.vm.network "forwarded_port", guest: 5000, host: 5001
   config.vm.network "forwarded_port", guest: 3000, host: 3001 
-  config.vm.network "forwarded_port", guest: 80, host: 8080 
+  config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
   config.vm.network "forwarded_port", guest: 9000, host: 9001 
   config.vm.network "forwarded_port", guest: 20, host: 20 
   config.vm.network "forwarded_port", guest: 21, host: 21
@@ -35,8 +35,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: './startup_nodejs.sh'
   config.vm.provision "shell", path: './startup_nginx.sh'
   config.vm.provision "shell", path: './startup_firewall.sh'
-  config.vm.provision "shell", path: './create_test_reactapp.sh'
-  config.vm.provision "shell", path: './startup_LEMP_PostgreSQL.sh'
-  config.vm.provision "shell", path: './startup_wpcli.sh' #, run: 'always'
   config.vm.provision "shell", path: './extras.sh'
+  config.vm.provision "shell", path: './startup_php.sh'
+  config.vm.provision "shell", path: './clone_vagrant_repo.sh'
+  config.vm.provision "shell", path: './startup_wordpress.sh' #, run: 'always'
+  config.vm.provision "shell", path: './create_test_reactapp.sh'
+  config.vm.provision "shell", path: './startup_postgreSQL.sh'
 end
