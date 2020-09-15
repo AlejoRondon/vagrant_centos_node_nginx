@@ -31,7 +31,7 @@ sudo systemctl enable postgresql
 sudo setsebool -P httpd_can_network_connect_db 1
 
 #Paso 3: Usar roles y bases de datos de PostgreSQL
-sudo -i -u postgres
+# sudo -i -u postgres
 
 #Paso 4: Crear usuarios
 sudo -u postgres createuser app_dbeduvialwp
