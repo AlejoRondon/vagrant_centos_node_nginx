@@ -15,4 +15,6 @@ sudo systemctl enable php-fpm
 sudo systemctl restart httpd
 #Verifing php-fpm is running
 sudo systemctl status php-fpm
-# sudo nano /etc/nginx/conf.d/default.conf
+
+echo "<------>Updating php configuration files"
+cp /home/vagrant/documents/vagrant_centos_node_nginx/configuration_files/etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf 
