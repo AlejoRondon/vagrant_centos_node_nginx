@@ -3,21 +3,23 @@
 #https://medium.com/@timmykko/deploying-create-react-app-with-nginx-and-ubuntu-e6fe83c5e9e7
 #https://medium.com/@jgefroh/a-guide-to-using-nginx-for-static-websites-d96a9d034940
 echo "<¬¬¬¬¬>CREATING TESTING REACT APP<¬¬¬¬¬>"
-mkdir /home/vagrant/documents
+sudo mkdir /home/vagrant/documents
 cd /home/vagrant/documents
-npx create-react-app testapp
+sudo npx create-react-app testapp
 cd testapp
-yarn add serve
+sudo yarn add serve
 #https://return2.net/deploy-react-app-build-to-any-subdirectory/
 #https://stackoverflow.com/questions/43011207/using-homepage-in-package-json-without-messing-up-paths-for-localhost
-yarn build 
+sudo sed -i 's/"private": true,/"private": true,\n"homepage": ".",/g' package.json
+#building react app
+sudo yarn build 
 # copying folder
-cp -r build/ /var/www/wordpress/   
+sudo cp -r build/ /var/www/wordpress/   
 # renaming "build" folder on /var/www/ to "testapp"                                                  
-mv /var/www/wordpress/build /var/www/wordpress/testapp.com
+sudo mv /var/www/wordpress/build /var/www/wordpress/testapp.com
 # yarn serve -s build 
-chown nginx:nginx /var/www/wordpress/testapp.com
-chmod -R 775 /var/www/wordpress/testapp.com 
-chcon -t httpd_sys_content_t /var/www/testapp.com -R
-chcon -t httpd_sys_rw_content_t /var/www/testapp.com -R
+sudo chown nginx:nginx /var/www/wordpress/testapp.com
+sudo chmod -R 775 /var/www/wordpress/testapp.com 
+sudo chcon -t httpd_sys_content_t /var/www/wordpress/testapp.com -R
+sudo chcon -t httpd_sys_rw_content_t /var/www/wordpress/testapp.com -R
 
