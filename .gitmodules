@@ -1,0 +1,3 @@
+[submodule "reactapp"]
+	path = reactapp
+	url = https://AlejandroParqueExplora@bitbucket.org/parqueexploradevelopers/react-test-app.git
