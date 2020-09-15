@@ -31,14 +31,14 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  config.vm.provision "shell", path: './clone_vagrant_repo.sh'
   config.vm.provision "shell", path: './startup_workstation.sh'
   config.vm.provision "shell", path: './startup_nodejs.sh'
   config.vm.provision "shell", path: './startup_nginx.sh'
   config.vm.provision "shell", path: './startup_firewall.sh'
   config.vm.provision "shell", path: './extras.sh'
   config.vm.provision "shell", path: './startup_php.sh'
-  config.vm.provision "shell", path: './clone_vagrant_repo.sh'
+  config.vm.provision "shell", path: './startup_postgreSQL.sh'
   config.vm.provision "shell", path: './startup_wordpress.sh' #, run: 'always'
   config.vm.provision "shell", path: './create_test_reactapp.sh'
-  config.vm.provision "shell", path: './startup_postgreSQL.sh'
 end
