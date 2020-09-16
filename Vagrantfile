@@ -19,7 +19,10 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 20, host: 20 
   config.vm.network "forwarded_port", guest: 21, host: 21
   config.vm.network "forwarded_port", guest: 22, host: 22 #, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
-  
+
+  # config.vm.network "private_network", ip: "192.168.50.2"
+  # config.vm.hostname = "alehost.com"
+  #config.hostsupdater.remove_on_suspend = true
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
@@ -31,8 +34,8 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", path: './clone_vagrant_repo.sh'
   config.vm.provision "shell", path: './startup_workstation.sh'
+  config.vm.provision "shell", path: './clone_vagrant_repo.sh'
   config.vm.provision "shell", path: './startup_nodejs.sh'
   config.vm.provision "shell", path: './startup_nginx.sh'
   config.vm.provision "shell", path: './startup_firewall.sh'
