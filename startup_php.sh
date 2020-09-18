@@ -2,8 +2,18 @@ echo "<*****>STARTING UP PHP<*****>"
 #https://www.linuxtechi.com/install-php-on-centos-8-rhel-8/
 #https://www.hostinger.co/tutoriales/como-instalar-stack-nginx-mysql-php-v7-lemp-en-centos-7/
 #https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-centos-8-es
+
+#Only Centos line
 sudo dnf install epel-release -y
-sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+
+#--->
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+#sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+#sudo dnf install epel-release -y
+sudo rpm -ql epel-release
+sudo dnf repolist -v
+sudo dnf repository-packages epel list
+
 sudo dnf module list php -y
 sudo dnf module enable php:remi-7.4 -y
 sudo dnf install -y php php-cli php-common
@@ -17,4 +27,5 @@ sudo systemctl restart httpd
 sudo systemctl status php-fpm
 
 echo "<------>Updating php configuration files"
-cp /home/vagrant/documents/vagrant_centos_node_nginx/configuration_files/etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf 
+cp /home/cammanager/documents/vagrant_centos_node_nginx/configuration_files/etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf
+sudo systemctl restart php-fpm
