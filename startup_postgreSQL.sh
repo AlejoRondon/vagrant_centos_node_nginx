@@ -28,13 +28,14 @@ sudo postgresql-setup --initdb
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
-sudo setsebool -P httpd_can_network_connect_db 1
+echo "<*****>Configuring database(Postgres) connection<*****>"
+setsebool httpd_can_network_connect=1 httpd_can_network_connect_db=1
 
 #Paso 3: Usar roles y bases de datos de PostgreSQL
 # sudo -i -u postgres
 
 #Paso 4: Crear usuarios
-sudo -u postgres createuser app_dbeduvialwp
+#sudo -u postgres createuser app_dbeduvialwp
 sudo -u postgres psql -c "create user dbeduvialwpuser1 with password 'explorauser1';"
 # sudo -u postgres psql -c "create user dbeduvialwpuser2 with password 'explorauser2';"
 sudo -u postgres psql -c "create database dbeduvialwp;"
@@ -44,6 +45,8 @@ sudo -u postgres psql -c '\l'
 
 sudo cp /home/vagrant/documents/vagrant_centos_node_nginx/configuration_files/var/lib/pgsql/data/* /var/lib/pgsql/data/
 sudo systemctl restart postgresql.service
+
+# sudo -u postgres psql -h 10.2.0.88 -p 9999 -d dbeduvialwp -U app_dbeduvialwp
 
 #[root@localhost wordpress]# cp /var/lib/pgsql/data/pg_hba.conf /home/vagrant/documents/vagrant_centos_node_nginx/config_files2/
 #[root@localhost wordpress]# cp /var/lib/pgsql/data/postgresql.conf /home/vagrant/documents/vagrant_centos_node_nginx/config_files2/
